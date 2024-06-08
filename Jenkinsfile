@@ -1,19 +1,12 @@
 pipeline {
-    agent any
-
+    agent { docker { image 'mcr.microsoft.com/playwright:v1.44.1-jammy' } }
     tools {
         nodejs 'nodejs'
-    }   
-
+    }
+    environment {
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = '1' // Para evitar que Playwright descargue automáticamente el navegador
+    }
     stages {
-
-         stage('Check Permissions') {
-            steps {
-                // Verificar los permisos ejecutando un comando simple
-                sh 'echo "Jenkins tiene permisos suficientes"'
-            }
-        }
-
         stage('Checkout') {
             steps {
                 // Clonar el repositorio desde GitHub
@@ -25,17 +18,8 @@ pipeline {
             steps {
                 // Instalar las dependencias utilizando npm
                 sh 'npm install'
-                sh 'npm ci'
             }
         }
-
-        stage('Install Browsers') {
-            steps {
-                // Instalar los navegadores requeridos por Playwright con sudo
-                sh 'npx playwright install --with-deps'
-            }
-        }
-
 
         stage('Run Tests') {
             steps {
@@ -43,14 +27,5 @@ pipeline {
                 sh 'npx playwright test'
             }
         }
-
-        // stage('Build and Deploy') {
-        //     steps {
-        //         // Construir y desplegar la aplicación (puedes ajustar esta parte según tus necesidades)
-        //         sh 'npm run build'
-        //         // Comando para desplegar la aplicación (por ejemplo, a un servidor remoto)
-        //         // sh 'npm run deploy'
-        //     }
-        // }
     }
 }
