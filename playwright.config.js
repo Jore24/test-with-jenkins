@@ -4,7 +4,7 @@ export default defineConfig({
   timeout: 100000,
   projects: [
     {
-      name: "chromium",
+      name: "Google Chrome",
       use: {
         channel: 'chrome',
         headless: false,
