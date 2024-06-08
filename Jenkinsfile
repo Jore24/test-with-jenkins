@@ -1,14 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'playwright/chromium'
-            // No es necesario especificar args para montar el directorio de trabajo en un Jenkins dockerizado
-        }
-    }
-    
+    agent any
+
     tools {
         nodejs 'nodejs'
-    }
+    }   
 
     stages {
         stage('Checkout') {
@@ -25,11 +20,27 @@ pipeline {
             }
         }
 
+        stage('Install Browsers') {
+            steps {
+                // Instalar los navegadores requeridos por Playwright
+                sh 'npx playwright install --with-deps chromium'
+            }
+        }
+
         stage('Run Tests') {
             steps {
                 // Ejecutar las pruebas de Playwright
                 sh 'npx playwright test'
             }
         }
+
+        // stage('Build and Deploy') {
+        //     steps {
+        //         // Construir y desplegar la aplicación (puedes ajustar esta parte según tus necesidades)
+        //         sh 'npm run build'
+        //         // Comando para desplegar la aplicación (por ejemplo, a un servidor remoto)
+        //         // sh 'npm run deploy'
+        //     }
+        // }
     }
 }
