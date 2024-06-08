@@ -23,7 +23,7 @@ pipeline {
         stage('Install System Dependencies') {
             steps {
                 // Instalar las dependencias del sistema necesarias para Playwright
-                sh 'npx playwright install-deps'
+                sh 'sudo npx playwright install-deps'
             }
         }
 
