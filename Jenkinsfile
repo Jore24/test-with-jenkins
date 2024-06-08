@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clonar el repositorio desde GitHub
-                git 'https://github.com/Jore24/test-with-jenkins'
+                git branch: 'main', url: 'https://github.com/Jore24/test-with-jenkins.git'
             }
         }
         
