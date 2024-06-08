@@ -25,6 +25,7 @@ pipeline {
             steps {
                 // Instalar las dependencias utilizando npm
                 sh 'npm install'
+                sh 'npm ci'
             }
         }
 
