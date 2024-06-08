@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-     tools {
+    tools {
         nodejs 'nodejs'
     }   
 
@@ -20,8 +20,16 @@ pipeline {
             }
         }
 
+        stage('Install Browsers') {
+            steps {
+                // Instalar los navegadores requeridos por Playwright
+                sh 'npx playwright install'
+            }
+        }
+
         stage('Run Tests') {
             steps {
+                // Ejecutar las pruebas de Playwright
                 sh 'npx playwright test'
             }
         }
