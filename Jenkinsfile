@@ -6,6 +6,14 @@ pipeline {
     }   
 
     stages {
+
+         stage('Check Permissions') {
+            steps {
+                // Verificar los permisos ejecutando un comando simple
+                sh 'echo "Jenkins tiene permisos suficientes"'
+            }
+        }
+        
         stage('Checkout') {
             steps {
                 // Clonar el repositorio desde GitHub
