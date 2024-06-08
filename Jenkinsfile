@@ -30,10 +30,11 @@ pipeline {
 
         stage('Install Browsers') {
             steps {
-                // Instalar los navegadores requeridos por Playwright
-                sh 'npx playwright install'
+                // Instalar los navegadores requeridos por Playwright con sudo
+                sh 'sudo npx playwright install'
             }
         }
+
 
         stage('Run Tests') {
             steps {
