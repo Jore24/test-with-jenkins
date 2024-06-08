@@ -31,7 +31,7 @@ pipeline {
         stage('Install Browsers') {
             steps {
                 // Instalar los navegadores requeridos por Playwright
-                sh 'npx playwright install --with-deps Google Chrome'
+                sh 'npx playwright install'
             }
         }
 
