@@ -20,6 +20,13 @@ pipeline {
             }
         }
 
+        stage('Install System Dependencies') {
+            steps {
+                // Instalar las dependencias del sistema necesarias para Playwright
+                sh 'npx playwright install-deps'
+            }
+        }
+
         stage('Install Browsers') {
             steps {
                 // Instalar los navegadores requeridos por Playwright
