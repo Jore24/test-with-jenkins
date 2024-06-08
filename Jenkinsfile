@@ -31,7 +31,7 @@ pipeline {
         stage('Install Browsers') {
             steps {
                 // Instalar los navegadores requeridos por Playwright con sudo
-                sh 'npx playwright install chrome'
+                sh 'npx playwright install-deps'
             }
         }
 
