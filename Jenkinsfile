@@ -5,11 +5,12 @@ pipeline {
         }
     }
     stages {
-        stage('Test Docker Image') {
+        stage('Check Browsers') {
             steps {
                 script {
-                    // Ejecuta un comando simple dentro del contenedor
-                    sh 'ls -la'
+                    // Verifica la presencia de los navegadores necesarios
+                    sh 'playwright install'
+                    sh 'playwright info'
                 }
             }
         }
