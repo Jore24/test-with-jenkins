@@ -20,6 +20,8 @@ test.describe('store', () => {
     // await page.waitForTimeout(90000);
     await page.waitForTimeout(5000);
     const isSuccessful = await page.isVisible('button:has-text("Abrir traducción")');
+    console.log('isSuccessful2', isSuccessful);
     expect(isSuccessful).toBe(true);
+    console.log('isSuccessful', isSuccessful);
   });
 });

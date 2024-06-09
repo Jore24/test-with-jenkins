@@ -8,4 +8,9 @@ pipeline {
          }
       }
    }
+   post {
+      always {
+         publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'test-results', reportFiles: 'index.html', reportName: 'Playwright Test Report'])
+      }
+   }
 }
