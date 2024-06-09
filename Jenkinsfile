@@ -8,9 +8,18 @@ pipeline {
          }
       }
    }
-   post {
-      always {
-         publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'test-results', reportFiles: 'index.html', reportName: 'Playwright Test Report'])
-      }
+   
+   post{
+       always{
+            publishHTML([
+                            reportName : 'Playwright Report',
+                            reportDir: 'playwright-report',
+                            reportFiles: 'index.html',
+                            keepAll:     true,
+                            alwaysLinkToLastBuild: true,
+                            allowMissing: false
+                        ])
+       }
    }
+   
 }
