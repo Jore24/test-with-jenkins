@@ -1,14 +1,11 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   timeout: 100000,
   projects: [
     {
-      name: "Google Chrome",
-      use: {
-        channel: 'chrome',
-        headless: false,
-      },
+      name: 'chromium',
+      use: {...devices['Desktop Chrome']},
     },
   ]
 });
